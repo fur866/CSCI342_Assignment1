@@ -10,8 +10,8 @@ import java.util.Collections;
  * Created by Fahad on 3/04/2016.
  */
 public class GameModel {
-    private int firstTappedTile;
-    private int secondTappedTile;
+    private int lastTappedTile;
+    private int secondLastTappedTile;
     private ArrayList<TileData> tiles;
     private Boolean isFirst;
     private int totalMatchedTiles;
@@ -33,8 +33,8 @@ public class GameModel {
     public void reset(int numberOfTiles, ArrayList<Drawable> images)
     {
         //reset all other members to default
-        this.firstTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
-        this.secondTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
+        this.lastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
+        this.secondLastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
         this.isFirst = true; //set to true means the first tile is tapped, it will be true
         this.totalMatchedTiles = 0; //0 initially
         this.gameScore = 0; //0 initially
@@ -72,6 +72,19 @@ public class GameModel {
             tileDescription += " " + tile.description();
         }
         return tileDescription;
+    }
+
+    public void pushTileIndex(int index)
+    {
+       if(this.lastTappedTile == 0)
+       {
+           this.lastTappedTile = index;
+       }
+       else
+       {
+           this.secondLastTappedTile = this.lastTappedTile;
+           this.lastTappedTile = index;
+       }
     }
 
     public interface gameInterface

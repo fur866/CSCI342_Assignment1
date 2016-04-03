@@ -76,15 +76,8 @@ public class GameModel {
 
     public void pushTileIndex(int index)
     {
-       if(this.lastTappedTile == 0)
-       {
-           this.lastTappedTile = index;
-       }
-       else
-       {
-           this.secondLastTappedTile = this.lastTappedTile;
-           this.lastTappedTile = index;
-       }
+        this.secondLastTappedTile = (this.lastTappedTile == 0) ? 0 : this.lastTappedTile;
+        this.lastTappedTile = index;
     }
 
     public interface gameInterface

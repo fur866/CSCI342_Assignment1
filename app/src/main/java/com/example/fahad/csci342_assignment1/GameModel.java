@@ -3,6 +3,8 @@ package com.example.fahad.csci342_assignment1;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by Fahad on 3/04/2016.
@@ -52,6 +54,14 @@ public class GameModel {
 
             i += 2; //increase i by 2 after each loop
         }
+
+        shuffle();
+    }
+
+    // shuffle should only be down once, when the game is being reset. Hence, this method is private
+    private void shuffle()
+    {
+        Collections.shuffle(this.tiles);
     }
 
     public interface gameInterface

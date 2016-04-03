@@ -82,6 +82,9 @@ public class GameModel {
 
     public interface gameInterface
     {
-
+        void gameDidComplete(GameModel gameModel);
+        void didMatchTile(GameModel gameModel,int tileIndex, int previousTileIndex);
+        void didFailToMatchTile(GameModel gameModel, int tileIndex, int previousTileIndex);
+        void scoreDidUpdate(GameModel gameModel, int newScore);
     }
 }

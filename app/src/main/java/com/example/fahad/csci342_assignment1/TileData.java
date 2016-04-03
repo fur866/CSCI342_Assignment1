@@ -34,4 +34,9 @@ public class TileData {
     {
         return this.identifier;
     }
+
+    public String description()
+    {
+        return String.valueOf(this.identifier);
+    }
 }

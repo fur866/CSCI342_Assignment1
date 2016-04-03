@@ -64,6 +64,16 @@ public class GameModel {
         Collections.shuffle(this.tiles);
     }
 
+    public String description()
+    {
+        String tileDescription = "";
+        for(TileData tile : this.tiles)
+        {
+            tileDescription += " " + tile.description();
+        }
+        return tileDescription;
+    }
+
     public interface gameInterface
     {
 

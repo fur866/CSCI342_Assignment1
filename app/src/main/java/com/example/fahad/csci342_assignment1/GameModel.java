@@ -23,27 +23,37 @@ public class GameModel {
         if(numberOfTiles % 2 != 0){
             numberOfTiles += 1;
         }
-
-        //get some data
-        int totalImages = images.size();
-        int imageCounter = 0;
+        //initalize the arraylist only in constructer and then just clear it off in reset for efficiency purposes.
         this.tiles = new ArrayList<TileData>();
+        reset(numberOfTiles,images);
+    }
 
-        for(int i = 0; i < numberOfTiles; i++){
-            //add a TileData : the identifier varies from 1 to total images
+    public void reset(int numberOfTiles, ArrayList<Drawable> images)
+    {
+        //reset all other members to default
+        this.firstTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
+        this.secondTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
+        this.isFirst = true; //set to true means the first tile is tapped, it will be true
+        this.totalMatchedTiles = 0; //0 initially
+        this.gameScore = 0; //0 initially
+        this.tiles.clear(); // clear the list
+
+
+        int totalImages = images.size(); //get total number of images
+        int imageCounter = 0; //set imageCounter
+
+        for(int i = 0; i < numberOfTiles;){
+            //add two same TileDatas : the identifier varies from 1 to total number of images
+            this.tiles.add(new TileData(images.get(imageCounter),imageCounter+1));
             this.tiles.add(new TileData(images.get(imageCounter),imageCounter+1));
 
-            //if we have run at the end of images, set the imageCounter to 1 again
+            //if we have run at the end of images, set the imageCounter to 1 again, else increment it
             imageCounter = imageCounter+1 >= totalImages ? 1 : imageCounter+1;
-        }
 
-        //set all other members to default
-        this.firstTappedTile = 0;
-        this.secondTappedTile = 0;
-        this.isFirst = true;
-        this.totalMatchedTiles = 0;
-        this.gameScore = 0;
+            i += 2; //increase i by 2 after each loop
+        }
     }
+
     public interface gameInterface
     {
 

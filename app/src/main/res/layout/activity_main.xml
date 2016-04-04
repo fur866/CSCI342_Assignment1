@@ -19,29 +19,6 @@
         android:background="#f7d6d3d3"
         android:layout_margin="5dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile1"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile2"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile3"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -52,29 +29,6 @@
         android:background="#F7D6D3D3"
         android:layout_margin="5dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile4"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile5"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile6"
-            android:layout_weight="1"
-            android:background="#f9fe0000"
-            android:layout_margin="5dp" />
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -85,29 +39,6 @@
         android:background="#F7D6D3D3"
         android:layout_margin="5dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile7"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#f9fe0000" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile8"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#f9fe0000" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile9"
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:background="#f9fe0000" />
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -118,28 +49,5 @@
         android:background="#F7D6D3D3"
         android:layout_margin="5dp">
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile10"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#f9fe0000" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile11"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#f9fe0000" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/tile12"
-            android:layout_margin="5dp"
-            android:layout_weight="1"
-            android:background="#f9fe0000" />
     </com.example.fahad.csci342_assignment1.TileView>
 </com.example.fahad.csci342_assignment1.TileView>

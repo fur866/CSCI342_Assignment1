@@ -142,4 +142,5 @@
             android:layout_weight="1"
             android:background="#f9fe0000" />
     </com.example.fahad.csci342_assignment1.TileView>
+
 </com.example.fahad.csci342_assignment1.TileView>

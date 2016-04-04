@@ -18,7 +18,30 @@
         android:layout_weight="1"
         android:background="#f7d6d3d3"
         android:layout_margin="5dp">
-
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -26,9 +49,32 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#F7D6D3D3"
+        android:background="#f7d6d3d3"
         android:layout_margin="5dp">
-
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -36,9 +82,32 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#F7D6D3D3"
+        android:background="#f7d6d3d3"
         android:layout_margin="5dp">
-
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
     </com.example.fahad.csci342_assignment1.TileView>
 
     <com.example.fahad.csci342_assignment1.TileView
@@ -46,8 +115,32 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#F7D6D3D3"
+        android:background="#f7d6d3d3"
         android:layout_margin="5dp">
-
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
+        <com.example.fahad.csci342_assignment1.TileView
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ebff0000"
+            android:layout_margin="5dp">
+        </com.example.fahad.csci342_assignment1.TileView>
     </com.example.fahad.csci342_assignment1.TileView>
+
 </com.example.fahad.csci342_assignment1.TileView>

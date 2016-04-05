@@ -50,6 +50,15 @@ public class TileView extends LinearLayout{
         this.addView(this.imageView);
     }
 
+    public void setImage(Drawable picture)
+    {
+        this.image = picture;
+    }
+
+    public void setID(int id)
+    {
+        this.tileIndex = id;
+    }
 
     public void revealImage()
     {

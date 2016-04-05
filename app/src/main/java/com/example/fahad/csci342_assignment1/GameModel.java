@@ -80,6 +80,14 @@ public class GameModel {
         this.lastTappedTile = index;
     }
 
+    public TileData getTileData(int index)
+    {
+        if(index <= this.tiles.size()) {
+            return this.tiles.get(index);
+        }
+        return null;
+    }
+
     public interface gameInterface
     {
         void gameDidComplete(GameModel gameModel);

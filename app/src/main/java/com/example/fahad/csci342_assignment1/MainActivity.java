@@ -19,13 +19,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         ArrayList<Drawable> pictures = new ArrayList<Drawable>();
-        pictures.add(ContextCompat.getDrawable(this,R.drawable.baldhill));
-        pictures.add(ContextCompat.getDrawable(this,R.drawable.cathedral));
+        pictures.add(ContextCompat.getDrawable(this, R.drawable.baldhill));
+        pictures.add(ContextCompat.getDrawable(this, R.drawable.cathedral));
         pictures.add(ContextCompat.getDrawable(this,R.drawable.question));
-
         this.model = new GameModel(this.totalTiles,pictures);
-        Log.d("Here: ",model.description());
+
+        for(int i = 0; i < totalTiles; i++)
+        {
+            int id = getResources().getIdentifier("tile"+String.valueOf(i),"id","com.example.fahad.csci342_assignment1");
+            TileView tileViewInstance = (TileView)findViewById(id);
+            TileData tileDataInstance = this.model.getTileData(i);
+
+            tileViewInstance.setID(i + 1);
+            tileViewInstance.setImage(tileDataInstance.getImage());
+            //tileViewInstance.setTileViewListener(this);
+            tileViewInstance.coverImage();
+
+            tileViews.add(tileViewInstance);
+        }
+        //Log.d("Here: ",model.description());
     }
 }

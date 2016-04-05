@@ -23,7 +23,29 @@ public class MainActivity extends AppCompatActivity {
         pictures.add(ContextCompat.getDrawable(this, R.drawable.baldhill));
         pictures.add(ContextCompat.getDrawable(this, R.drawable.cathedral));
         pictures.add(ContextCompat.getDrawable(this,R.drawable.question));
+
         this.model = new GameModel(this.totalTiles,pictures);
+        this.model.setGameModelInterface(new GameModel.gameInterface() {
+            @Override
+            public void gameDidComplete(GameModel gameModel) {
+
+            }
+
+            @Override
+            public void didMatchTile(GameModel gameModel, int tileIndex, int previousTileIndex) {
+
+            }
+
+            @Override
+            public void didFailToMatchTile(GameModel gameModel, int tileIndex, int previousTileIndex) {
+
+            }
+
+            @Override
+            public void scoreDidUpdate(GameModel gameModel, int newScore) {
+
+            }
+        });
 
         for(int i = 0; i < totalTiles; i++)
         {

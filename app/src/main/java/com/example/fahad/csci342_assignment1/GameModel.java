@@ -30,6 +30,11 @@ public class GameModel {
         reset(numberOfTiles,images);
     }
 
+    public void setGameModelInterface(gameInterface interfaceReference)
+    {
+        this.interfaceReference = interfaceReference;
+    }
+
     public void reset(int numberOfTiles, ArrayList<Drawable> images)
     {
         //reset all other members to default

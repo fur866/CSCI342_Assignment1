@@ -93,6 +93,10 @@ public class GameModel {
         return null;
     }
 
+    public int getScore()
+    {
+        return this.gameScore;
+    }
     public interface gameInterface
     {
         void gameDidComplete(GameModel gameModel);

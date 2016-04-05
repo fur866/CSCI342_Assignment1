@@ -1,5 +1,7 @@
 package com.example.fahad.csci342_assignment1;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<Drawable> pictures = new ArrayList<Drawable>();
+        final ArrayList<Drawable> pictures = new ArrayList<Drawable>();
         pictures.add(ContextCompat.getDrawable(this, R.drawable.baldhill));
         pictures.add(ContextCompat.getDrawable(this, R.drawable.cathedral));
         pictures.add(ContextCompat.getDrawable(this,R.drawable.question));
@@ -27,8 +29,26 @@ public class MainActivity extends AppCompatActivity {
         this.model = new GameModel(this.totalTiles,pictures);
         this.model.setGameModelInterface(new GameModel.gameInterface() {
             @Override
-            public void gameDidComplete(GameModel gameModel) {
+            public void gameDidComplete(final GameModel gameModel) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Game Completed");
+                alert.setMessage("Your score: " + String.valueOf(gameModel.getScore()));
+                alert.setIcon(android.R.drawable.ic_dialog_info);
+                alert.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        gameModel.reset(totalTiles, pictures);
+                        dialog.dismiss();
+                    }
+                });
 
+                alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alert.show();
             }
 
             @Override

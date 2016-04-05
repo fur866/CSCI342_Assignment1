@@ -41,6 +41,7 @@ public class TileView extends LinearLayout{
                 }
                 else {
                     coverImage();
+                    //hideImage();
                 }
                 //tileListener.didSelectTile(TileView.this);
             }

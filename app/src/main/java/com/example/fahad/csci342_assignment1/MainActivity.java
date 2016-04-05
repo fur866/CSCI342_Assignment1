@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private GameModel model;
+    private ArrayList<TileView> tileViews;
+    private final int totalTiles = 12;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         pictures.add(ContextCompat.getDrawable(this,R.drawable.cathedral));
         pictures.add(ContextCompat.getDrawable(this,R.drawable.question));
 
-        GameModel model = new GameModel(6,pictures);
+        this.model = new GameModel(this.totalTiles,pictures);
         Log.d("Here: ",model.description());
     }
 }

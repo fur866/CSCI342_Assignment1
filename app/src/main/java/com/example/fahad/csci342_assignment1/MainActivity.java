@@ -31,6 +31,16 @@ public class MainActivity extends AppCompatActivity {
             TileView tileViewInstance = (TileView)findViewById(id);
             TileData tileDataInstance = this.model.getTileData(i);
 
+            if (tileViewInstance != null) {
+                tileViewInstance.setTileViewListener(new TileView.TileViewListener() {
+                    @Override
+                    public void didSelectTile(TileView tileView) {
+                        tileView.revealImage();
+                        model.pushTileIndex(tileView.getTileIndex());
+                    }
+                });
+            }
+
             tileViewInstance.setID(i + 1);
             tileViewInstance.setImage(tileDataInstance.getImage());
             //tileViewInstance.setTileViewListener(this);

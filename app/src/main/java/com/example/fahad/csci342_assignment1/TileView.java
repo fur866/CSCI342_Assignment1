@@ -60,6 +60,16 @@ public class TileView extends LinearLayout{
         this.tileIndex = id;
     }
 
+    public int getTileIndex()
+    {
+        return this.tileIndex;
+    }
+
+    public void setTileViewListener(TileViewListener listener)
+    {
+        this.tileListener = listener;
+    }
+
     public void revealImage()
     {
         if(!isFlipped) {

@@ -41,15 +41,9 @@ public class MainActivity extends AppCompatActivity {
                 alert.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-                        //update every thing
-                        gameModel.reset(totalTiles, pictures);
-                        for(TileView singleView : tileViews)
-                        {
-                            singleView.coverImage();
-                        }
-                        scoreDidUpdate(gameModel,0);
                         dialog.dismiss();
+                        finish(); //finish the activity
+                        startActivity(getIntent()); //run the game again
                     }
                 });
 
@@ -57,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        finish(); //close the app
                     }
                 });
                 alert.show();
@@ -114,11 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
             tileViewInstance.setID(i-1);
             tileViewInstance.setImage(tileDataInstance.getImage());
-            //tileViewInstance.setTileViewListener(this);
             tileViewInstance.coverImage();
 
             tileViews.add(tileViewInstance);
         }
-        Log.d("Here: ",model.description());
     }
 }

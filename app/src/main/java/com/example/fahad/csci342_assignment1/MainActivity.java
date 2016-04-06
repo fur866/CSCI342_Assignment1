@@ -26,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Drawable> pictures = new ArrayList<Drawable>();
         pictures.add(ContextCompat.getDrawable(this, R.drawable.baldhill));
         pictures.add(ContextCompat.getDrawable(this, R.drawable.cathedral));
-        pictures.add(ContextCompat.getDrawable(this,R.drawable.question));
+        pictures.add(ContextCompat.getDrawable(this,R.drawable.lake));
+
+        this.tileViews = new ArrayList<TileView>();
 
         this.model = new GameModel(this.totalTiles,pictures);
         this.model.setGameModelInterface(new GameModel.gameInterface() {
@@ -39,7 +41,14 @@ public class MainActivity extends AppCompatActivity {
                 alert.setPositiveButton("New Game", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        //update every thing
                         gameModel.reset(totalTiles, pictures);
+                        for(TileView singleView : tileViews)
+                        {
+                            singleView.coverImage();
+                        }
+                        scoreDidUpdate(gameModel,0);
                         dialog.dismiss();
                     }
                 });
@@ -87,11 +96,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        for(int i = 0; i < totalTiles; i++)
+        for(int i = 1; i <= totalTiles; i++)
         {
             int id = getResources().getIdentifier("tile"+String.valueOf(i),"id","com.example.fahad.csci342_assignment1");
             TileView tileViewInstance = (TileView)findViewById(id);
-            TileData tileDataInstance = this.model.getTileData(i);
+            TileData tileDataInstance = this.model.getTileData(i-1);
 
             if (tileViewInstance != null) {
                 tileViewInstance.setTileViewListener(new TileView.TileViewListener() {
@@ -103,13 +112,13 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-            tileViewInstance.setID(i + 1);
+            tileViewInstance.setID(i-1);
             tileViewInstance.setImage(tileDataInstance.getImage());
             //tileViewInstance.setTileViewListener(this);
             tileViewInstance.coverImage();
 
             tileViews.add(tileViewInstance);
         }
-        //Log.d("Here: ",model.description());
+        Log.d("Here: ",model.description());
     }
 }

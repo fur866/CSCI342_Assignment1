@@ -36,14 +36,7 @@ public class TileView extends LinearLayout{
             @Override
             public void onClick(View view)
             {
-                if(!isFlipped) {
-                    revealImage();
-                }
-                else {
-                    coverImage();
-                    //hideImage();
-                }
-                //tileListener.didSelectTile(TileView.this);
+                tileListener.didSelectTile(TileView.this);
             }
         });
 
@@ -73,7 +66,7 @@ public class TileView extends LinearLayout{
     public void revealImage()
     {
         if(!isFlipped) {
-            this.image = ContextCompat.getDrawable(getContext(),R.drawable.lake);
+//            this.image = ContextCompat.getDrawable(getContext(),R.drawable.lake);
             this.imageView.setImageDrawable(this.image);
             this.isFlipped = true;
         }

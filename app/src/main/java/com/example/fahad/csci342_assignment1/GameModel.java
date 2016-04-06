@@ -1,6 +1,7 @@
 package com.example.fahad.csci342_assignment1;
 
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,10 +12,10 @@ import java.util.Collections;
  */
 public class GameModel {
     private int lastTappedTile;
-    private int secondLastTappedTile;
     private ArrayList<TileData> tiles;
     private Boolean isFirst;
     private int totalMatchedTiles;
+    private int totalTiles;
     public gameInterface interfaceReference;
     private int gameScore;
 
@@ -27,7 +28,8 @@ public class GameModel {
         }
         //initalize the arraylist only in constructer and then just clear it off in reset for efficiency purposes.
         this.tiles = new ArrayList<TileData>();
-        reset(numberOfTiles,images);
+        this.totalTiles = numberOfTiles;
+        reset(numberOfTiles, images);
     }
 
     public void setGameModelInterface(gameInterface interfaceReference)
@@ -39,7 +41,6 @@ public class GameModel {
     {
         //reset all other members to default
         this.lastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
-        this.secondLastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
         this.isFirst = true; //set to true means the first tile is tapped, it will be true
         this.totalMatchedTiles = 0; //0 initially
         this.gameScore = 0; //0 initially
@@ -81,8 +82,33 @@ public class GameModel {
 
     public void pushTileIndex(int index)
     {
-        this.secondLastTappedTile = (this.lastTappedTile == 0) ? 0 : this.lastTappedTile;
-        this.lastTappedTile = index;
+        if(this.isFirst) {
+            this.lastTappedTile = index;
+            this.isFirst = false;
+        }
+        else
+        {
+            if(this.tiles.get(this.lastTappedTile).getIdentifier() == this.tiles.get(index).getIdentifier())
+            {
+                this.gameScore += 200;
+                this.interfaceReference.didMatchTile(this,this.lastTappedTile,index);
+                this.totalMatchedTiles += 2;
+            }
+            else
+            {
+                this.gameScore -= 200;
+                this.interfaceReference.didFailToMatchTile(this,this.lastTappedTile,index);
+            }
+            this.interfaceReference.scoreDidUpdate(this,this.gameScore);
+
+            this.isFirst = true;
+            this.lastTappedTile = 0;
+        }
+
+        if(this.totalMatchedTiles == this.totalTiles)
+        {
+            this.interfaceReference.gameDidComplete(this);
+        }
     }
 
     public TileData getTileData(int index)

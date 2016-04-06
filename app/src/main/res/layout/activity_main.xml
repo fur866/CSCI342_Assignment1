@@ -20,7 +20,8 @@
         android:autoText="false"
         android:textAlignment="center"
         android:textColor="#010101"
-        android:textSize="@dimen/abc_action_bar_stacked_max_height" />
+        android:textSize="@dimen/abc_action_bar_stacked_max_height"
+        android:text="Score: 0" />
 
     <LinearLayout
         android:orientation="horizontal"

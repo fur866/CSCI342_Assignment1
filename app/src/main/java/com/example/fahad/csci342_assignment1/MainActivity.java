@@ -3,10 +3,12 @@ package com.example.fahad.csci342_assignment1;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -52,18 +54,36 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void didMatchTile(GameModel gameModel, int tileIndex, int previousTileIndex) {
-
+            public void didMatchTile(final GameModel gameModel, final int tileIndex, final int previousTileIndex) {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //after 1 second
+                        tileViews.get(tileIndex).hideImage();
+                        tileViews.get(previousTileIndex).hideImage();
+                    }
+                }, 1000);
             }
 
             @Override
-            public void didFailToMatchTile(GameModel gameModel, int tileIndex, int previousTileIndex) {
-
+            public void didFailToMatchTile(GameModel gameModel, final int tileIndex, final int previousTileIndex) {
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        //after 1 second
+                        tileViews.get(tileIndex).coverImage();
+                        tileViews.get(previousTileIndex).coverImage();
+                    }
+                }, 1000);
             }
 
             @Override
             public void scoreDidUpdate(GameModel gameModel, int newScore) {
-
+                int id = getResources().getIdentifier("score","id","com.example.fahad.csci342_assignment1");
+                TextView label = (TextView)findViewById(id);
+                label.setText("Score: "+ String.valueOf(newScore));
             }
         });
 

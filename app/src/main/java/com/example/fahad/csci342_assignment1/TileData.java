@@ -3,13 +3,15 @@ package com.example.fahad.csci342_assignment1;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by Fahad on 3/04/2016.
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
  */
 public class TileData {
     private Drawable Image;
     private int identifier;
 
-
+    //constructor
     TileData(Drawable image, int id)
     {
         //check if image is an instance of drawable
@@ -35,6 +37,7 @@ public class TileData {
         return this.identifier;
     }
 
+    //for debugging purposes. Outputs the id data
     public String description()
     {
         return String.valueOf(this.identifier);

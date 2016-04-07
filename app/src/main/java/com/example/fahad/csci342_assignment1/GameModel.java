@@ -3,20 +3,21 @@ package com.example.fahad.csci342_assignment1;
 import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Created by Fahad on 3/04/2016.
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
  */
 public class GameModel {
-    private int lastTappedTile;
-    private int secondLastTappedTile;
-    private ArrayList<TileData> tiles;
-    private Boolean isFirst;
-    private int totalMatchedTiles;
-    public gameInterface interfaceReference;
-    private int gameScore;
+    private int lastTappedTile; //contains id for the last TappedTile
+    private ArrayList<TileData> tiles; //contains the tiles
+    private Boolean isFirst; //checks if the tapped tile is the first of the two tiles
+    private int totalMatchedTiles; //keeps count of the total number of matched tiles
+    private int totalTiles; //keeps count of total tiles
+    public gameInterface interfaceReference; //reference to the interface
+    private int gameScore; //contains the game score
 
     //constructor
     GameModel(int numberOfTiles, ArrayList<Drawable> images){
@@ -27,14 +28,19 @@ public class GameModel {
         }
         //initalize the arraylist only in constructer and then just clear it off in reset for efficiency purposes.
         this.tiles = new ArrayList<TileData>();
-        reset(numberOfTiles,images);
+        this.totalTiles = numberOfTiles;
+        reset(numberOfTiles, images);
+    }
+
+    public void setGameModelInterface(gameInterface interfaceReference)
+    {
+        this.interfaceReference = interfaceReference;
     }
 
     public void reset(int numberOfTiles, ArrayList<Drawable> images)
     {
         //reset all other members to default
         this.lastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
-        this.secondLastTappedTile = 0; //identifier varies from 1 to total images. 0 means not tapped yet
         this.isFirst = true; //set to true means the first tile is tapped, it will be true
         this.totalMatchedTiles = 0; //0 initially
         this.gameScore = 0; //0 initially
@@ -76,10 +82,47 @@ public class GameModel {
 
     public void pushTileIndex(int index)
     {
-        this.secondLastTappedTile = (this.lastTappedTile == 0) ? 0 : this.lastTappedTile;
-        this.lastTappedTile = index;
+        if(this.isFirst) {
+            this.lastTappedTile = index;
+            this.isFirst = false;
+        }
+        else
+        {
+            if(this.tiles.get(this.lastTappedTile).getIdentifier() == this.tiles.get(index).getIdentifier())
+            {
+                this.gameScore += 200;
+                this.interfaceReference.didMatchTile(this,this.lastTappedTile,index);
+                this.totalMatchedTiles += 2;
+            }
+            else
+            {
+                this.gameScore -= 200;
+                this.interfaceReference.didFailToMatchTile(this,this.lastTappedTile,index);
+            }
+            this.interfaceReference.scoreDidUpdate(this,this.gameScore);
+
+            this.isFirst = true;
+            this.lastTappedTile = 0;
+        }
+
+        if(this.totalMatchedTiles == this.totalTiles)
+        {
+            this.interfaceReference.gameDidComplete(this);
+        }
     }
 
+    public TileData getTileData(int index)
+    {
+        if(index <= this.tiles.size()) {
+            return this.tiles.get(index);
+        }
+        return null;
+    }
+
+    public int getScore()
+    {
+        return this.gameScore;
+    }
     public interface gameInterface
     {
         void gameDidComplete(GameModel gameModel);

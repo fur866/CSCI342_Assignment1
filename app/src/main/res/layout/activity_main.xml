@@ -11,6 +11,17 @@
     android:orientation="vertical"
     android:id="@+id/parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/score"
+        android:layout_weight="0.5"
+        android:background="#8a9aff"
+        android:autoText="false"
+        android:textAlignment="center"
+        android:textColor="#010101"
+        android:textSize="@dimen/abc_action_bar_stacked_max_height"
+        android:text="Score: 0" />
 
     <LinearLayout
         android:orientation="horizontal"

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by Fahad on 3/04/2016.
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
  */
 public class TileView extends LinearLayout{
 
@@ -20,12 +20,14 @@ public class TileView extends LinearLayout{
     private TileViewListener tileListener;
     private int tileIndex;
     private Boolean isFlipped;
+    private Boolean isTapped; //checks whether the tile is tapped or not.
 
-
+    //constructor
     public TileView(Context context, AttributeSet attr)
     {
         super(context,attr);
         this.isFlipped = false;
+        this.isTapped = false;
 
         this.imageView = new ImageView(context);
         this.imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -36,43 +38,68 @@ public class TileView extends LinearLayout{
             @Override
             public void onClick(View view)
             {
-                if(!isFlipped) {
-                    revealImage();
-                }
-                else {
-                    coverImage();
-                    //hideImage();
-                }
-                //tileListener.didSelectTile(TileView.this);
+                tileListener.didSelectTile(TileView.this);
             }
         });
 
         this.addView(this.imageView);
     }
 
+    //sets the image to the passed image
+    public void setImage(Drawable picture)
+    {
+        this.image = picture;
+    }
 
+    //sets the ID
+    public void setID(int id)
+    {
+        this.tileIndex = id;
+    }
+
+    //set the tile view listener
+    public void setTileViewListener(TileViewListener listener)
+    {
+        this.tileListener = listener;
+    }
+
+    public Boolean isTileTapped()
+    {
+        return this.isTapped;
+    }
+
+    //returns the tile index
+    public int getTileIndex()
+    {
+        return this.tileIndex;
+    }
+
+    //reveals the image associated with the tile
     public void revealImage()
     {
-        if(!isFlipped) {
-            this.image = ContextCompat.getDrawable(getContext(),R.drawable.lake);
+        if(!isFlipped && !isTapped) {
             this.imageView.setImageDrawable(this.image);
             this.isFlipped = true;
         }
     }
 
+    //covers the image asscociated with the tile with the default question mark image
     public void coverImage()
     {
-        if(isFlipped) {
+        if(isFlipped && !isTapped) {
             this.imageView.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.question));
             this.isFlipped = false;
         }
     }
 
+    //hides the image
     public void hideImage()
     {
         this.imageView.setImageResource(android.R.color.transparent);
+        this.isTapped = true;
     }
 
+    //interface TileviewListener
     public interface TileViewListener {
         void didSelectTile(TileView tileView);
     }

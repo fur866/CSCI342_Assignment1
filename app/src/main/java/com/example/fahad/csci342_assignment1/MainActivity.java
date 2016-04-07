@@ -1,5 +1,11 @@
 package com.example.fahad.csci342_assignment1;
 
+/**
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
+ */
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -7,9 +13,7 @@ import android.os.Handler;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {

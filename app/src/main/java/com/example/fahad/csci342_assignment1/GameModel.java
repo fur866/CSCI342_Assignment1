@@ -1,23 +1,23 @@
 package com.example.fahad.csci342_assignment1;
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
- * Created by Fahad on 3/04/2016.
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
  */
 public class GameModel {
-    private int lastTappedTile;
-    private ArrayList<TileData> tiles;
-    private Boolean isFirst;
-    private int totalMatchedTiles;
-    private int totalTiles;
-    public gameInterface interfaceReference;
-    private int gameScore;
+    private int lastTappedTile; //contains id for the last TappedTile
+    private ArrayList<TileData> tiles; //contains the tiles
+    private Boolean isFirst; //checks if the tapped tile is the first of the two tiles
+    private int totalMatchedTiles; //keeps count of the total number of matched tiles
+    private int totalTiles; //keeps count of total tiles
+    public gameInterface interfaceReference; //reference to the interface
+    private int gameScore; //contains the game score
 
     //constructor
     GameModel(int numberOfTiles, ArrayList<Drawable> images){

@@ -4,14 +4,14 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
- * Created by Fahad on 3/04/2016.
+ * Name: Fahad Ur Rehman
+ * Sols: fur866
+ * ID: 4651960
  */
 public class TileView extends LinearLayout{
 
@@ -21,7 +21,7 @@ public class TileView extends LinearLayout{
     private int tileIndex;
     private Boolean isFlipped;
 
-
+    //constructor
     public TileView(Context context, AttributeSet attr)
     {
         super(context,attr);
@@ -43,35 +43,40 @@ public class TileView extends LinearLayout{
         this.addView(this.imageView);
     }
 
+    //sets the image to the passed image
     public void setImage(Drawable picture)
     {
         this.image = picture;
     }
 
+    //sets the ID
     public void setID(int id)
     {
         this.tileIndex = id;
     }
 
-    public int getTileIndex()
-    {
-        return this.tileIndex;
-    }
-
+    //set the tile view listener
     public void setTileViewListener(TileViewListener listener)
     {
         this.tileListener = listener;
     }
 
+    //returns the tile index
+    public int getTileIndex()
+    {
+        return this.tileIndex;
+    }
+
+    //reveals the image associated with the tile
     public void revealImage()
     {
         if(!isFlipped) {
-//            this.image = ContextCompat.getDrawable(getContext(),R.drawable.lake);
             this.imageView.setImageDrawable(this.image);
             this.isFlipped = true;
         }
     }
 
+    //covers the image asscociated with the tile with the default question mark image
     public void coverImage()
     {
         if(isFlipped) {
@@ -80,11 +85,13 @@ public class TileView extends LinearLayout{
         }
     }
 
+    //hides the image
     public void hideImage()
     {
         this.imageView.setImageResource(android.R.color.transparent);
     }
 
+    //interface TileviewListener
     public interface TileViewListener {
         void didSelectTile(TileView tileView);
     }

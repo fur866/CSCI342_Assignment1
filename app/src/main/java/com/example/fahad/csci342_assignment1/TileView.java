@@ -20,12 +20,14 @@ public class TileView extends LinearLayout{
     private TileViewListener tileListener;
     private int tileIndex;
     private Boolean isFlipped;
+    private Boolean isTapped; //checks whether the tile is tapped or not.
 
     //constructor
     public TileView(Context context, AttributeSet attr)
     {
         super(context,attr);
         this.isFlipped = false;
+        this.isTapped = false;
 
         this.imageView = new ImageView(context);
         this.imageView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -61,6 +63,11 @@ public class TileView extends LinearLayout{
         this.tileListener = listener;
     }
 
+    public Boolean isTileTapped()
+    {
+        return this.isTapped;
+    }
+
     //returns the tile index
     public int getTileIndex()
     {
@@ -70,7 +77,7 @@ public class TileView extends LinearLayout{
     //reveals the image associated with the tile
     public void revealImage()
     {
-        if(!isFlipped) {
+        if(!isFlipped && !isTapped) {
             this.imageView.setImageDrawable(this.image);
             this.isFlipped = true;
         }
@@ -79,7 +86,7 @@ public class TileView extends LinearLayout{
     //covers the image asscociated with the tile with the default question mark image
     public void coverImage()
     {
-        if(isFlipped) {
+        if(isFlipped && !isTapped) {
             this.imageView.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.question));
             this.isFlipped = false;
         }
@@ -89,6 +96,7 @@ public class TileView extends LinearLayout{
     public void hideImage()
     {
         this.imageView.setImageResource(android.R.color.transparent);
+        this.isTapped = true;
     }
 
     //interface TileviewListener

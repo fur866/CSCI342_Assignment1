@@ -25,16 +25,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //set the content view
         setContentView(R.layout.activity_main);
 
+        //create array list of images to be used in the game
         final ArrayList<Drawable> pictures = new ArrayList<Drawable>();
         pictures.add(ContextCompat.getDrawable(this, R.drawable.baldhill));
         pictures.add(ContextCompat.getDrawable(this, R.drawable.cathedral));
         pictures.add(ContextCompat.getDrawable(this,R.drawable.lake));
 
+        //initialize the tileViews
         this.tileViews = new ArrayList<TileView>();
 
+        //create the GameMolde Object
         this.model = new GameModel(this.totalTiles,pictures);
+        //set the interface with their implemenantations
         this.model.setGameModelInterface(new GameModel.gameInterface() {
             @Override
             public void gameDidComplete(final GameModel gameModel) {
@@ -95,27 +101,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //for the total number of tiles
         for(int i = 1; i <= totalTiles; i++)
         {
+            //get the corresponding id
             int id = getResources().getIdentifier("tile"+String.valueOf(i),"id","com.example.fahad.csci342_assignment1");
+            //find the tile view by id
             TileView tileViewInstance = (TileView)findViewById(id);
+            //get the corresponding tile data
             TileData tileDataInstance = this.model.getTileData(i-1);
 
             if (tileViewInstance != null) {
+                //implement the tile view listener
                 tileViewInstance.setTileViewListener(new TileView.TileViewListener() {
                     @Override
                     public void didSelectTile(TileView tileView) {
-                        tileView.revealImage();
-                        model.pushTileIndex(tileView.getTileIndex());
+                        if (!tileView.isTileTapped()) {
+                            tileView.revealImage();
+                            model.pushTileIndex(tileView.getTileIndex());
+                        }
                     }
                 });
             }
 
+            //set the id
             tileViewInstance.setID(i-1);
+            //set image
             tileViewInstance.setImage(tileDataInstance.getImage());
+            //call the cover image method to set the image to default
             tileViewInstance.coverImage();
 
-            tileViews.add(tileViewInstance);
+            //add the tile to the list of tile views
+            this.tileViews.add(tileViewInstance);
         }
     }
 }
